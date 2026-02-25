@@ -1,29 +1,24 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class PalindromeCheckerApp {
-    public static void main(String[] args) {
+
+    public static boolean isPalindrome(String str, int left, int right){
+        if(left >= right) return true;
+        if(str.charAt(left) != str.charAt(right)) return false;
+        return isPalindrome(str, left + 1, right - 1);
+    }
+
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        LinkedList<Character> list = new LinkedList<>();
-        for(char c : input.toCharArray()){
-            list.add(c);
-        }
-
-        boolean isPalindrome = true;
-        while(list.size() > 1){
-            if(!list.removeFirst().equals(list.removeLast())){
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        if(isPalindrome){
-            System.out.println(input + " is a palindrome (using LinkedList).");
+        if(isPalindrome(input, 0, input.length() - 1)){
+            System.out.println(input + " is a palindrome (recursive).");
         } else {
-            System.out.println(input + " is NOT a palindrome (using LinkedList).");
+            System.out.println(input + " is NOT a palindrome (recursive).");
         }
+
         sc.close();
     }
 }
