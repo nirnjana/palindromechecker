@@ -1,4 +1,18 @@
-import java.util.*;
+import java.util.Scanner;
+
+// Interface for Palindrome check
+interface PalindromeChecker {
+    boolean isPalindrome(String str);
+}
+
+// Implementation using String reverse
+class ReversePalindromeChecker implements PalindromeChecker {
+    @Override
+    public boolean isPalindrome(String str) {
+        String reversed = new StringBuilder(str).reverse().toString();
+        return str.equals(reversed);
+    }
+}
 
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
@@ -6,24 +20,13 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        LinkedList<Character> list = new LinkedList<>();
-        for(char c : input.toCharArray()){
-            list.add(c);
-        }
-
-        boolean isPalindrome = true;
-        while(list.size() > 1){
-            if(!list.removeFirst().equals(list.removeLast())){
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        if(isPalindrome){
-            System.out.println(input + " is a palindrome (using LinkedList).");
+        PalindromeChecker checker = new ReversePalindromeChecker();
+        if(checker.isPalindrome(input)){
+            System.out.println(input + " is a palindrome (OOP).");
         } else {
-            System.out.println(input + " is NOT a palindrome (using LinkedList).");
+            System.out.println(input + " is NOT a palindrome (OOP).");
         }
+
         sc.close();
     }
 }
