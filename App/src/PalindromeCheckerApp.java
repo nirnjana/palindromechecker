@@ -5,18 +5,23 @@ public class PalindromeCheckerApp {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
-        String reversed = "";
 
-        // Reverse the string manually
-        for(int i = input.length() - 1; i >= 0; i--){
-            reversed += input.charAt(i);
+        char[] chars = input.toCharArray();
+        boolean isPalindrome = true;
+
+        for (int i = 0; i < chars.length / 2; i++) {
+            if (chars[i] != chars[chars.length - 1 - i]) {
+                isPalindrome = false;
+                break;
+            }
         }
 
-        if(input.equals(reversed)){
-            System.out.println(input + " is a palindrome (using manual reverse).");
+        if (isPalindrome) {
+            System.out.println(input + " is a palindrome (using char array).");
         } else {
-            System.out.println(input + " is NOT a palindrome (using manual reverse).");
+            System.out.println(input + " is NOT a palindrome (using char array).");
         }
+
         sc.close();
     }
 }
