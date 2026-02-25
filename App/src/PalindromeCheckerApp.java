@@ -6,23 +6,23 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        Deque<Character> deque = new ArrayDeque<>();
+        LinkedList<Character> list = new LinkedList<>();
         for(char c : input.toCharArray()){
-            deque.addLast(c);
+            list.add(c);
         }
 
         boolean isPalindrome = true;
-        while(deque.size() > 1){
-            if(deque.removeFirst() != deque.removeLast()){
+        while(list.size() > 1){
+            if(!list.removeFirst().equals(list.removeLast())){
                 isPalindrome = false;
                 break;
             }
         }
 
         if(isPalindrome){
-            System.out.println(input + " is a palindrome (using deque).");
+            System.out.println(input + " is a palindrome (using LinkedList).");
         } else {
-            System.out.println(input + " is NOT a palindrome (using deque).");
+            System.out.println(input + " is NOT a palindrome (using LinkedList).");
         }
         sc.close();
     }
