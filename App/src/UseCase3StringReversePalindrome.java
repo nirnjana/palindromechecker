@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-public class UC3UserInputPalindrome {
+public class UseCase3StringReversePalindrome {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter a word:");
+        System.out.println("Enter a string:");
         String input = sc.nextLine();
 
         String reversed = "";
@@ -16,9 +16,9 @@ public class UC3UserInputPalindrome {
         }
 
         if (input.equals(reversed)) {
-            System.out.println(input + " is a Palindrome");
+            System.out.println("The given string is a Palindrome.");
         } else {
-            System.out.println(input + " is NOT a Palindrome");
+            System.out.println("The given string is NOT a Palindrome.");
         }
 
         sc.close();
