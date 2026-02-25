@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
@@ -6,24 +6,17 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        LinkedList<Character> list = new LinkedList<>();
-        for(char c : input.toCharArray()){
-            list.add(c);
-        }
+        // Normalize input: remove non-alphanumeric, convert to lowercase
+        String normalized = input.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
 
-        boolean isPalindrome = true;
-        while(list.size() > 1){
-            if(!list.removeFirst().equals(list.removeLast())){
-                isPalindrome = false;
-                break;
-            }
-        }
+        String reversed = new StringBuilder(normalized).reverse().toString();
 
-        if(isPalindrome){
-            System.out.println(input + " is a palindrome (using LinkedList).");
+        if(normalized.equals(reversed)){
+            System.out.println(input + " is a palindrome (normalized).");
         } else {
-            System.out.println(input + " is NOT a palindrome (using LinkedList).");
+            System.out.println(input + " is NOT a palindrome (normalized).");
         }
+
         sc.close();
     }
 }
