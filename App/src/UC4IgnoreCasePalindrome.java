@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class UC3UserInputPalindrome {
+public class UC4IgnoreCasePalindrome {
 
     public static void main(String[] args) {
 
@@ -9,6 +9,8 @@ public class UC3UserInputPalindrome {
         System.out.println("Enter a word:");
         String input = sc.nextLine();
 
+        input = input.toLowerCase();
+
         String reversed = "";
 
         for (int i = input.length() - 1; i >= 0; i--) {
@@ -16,9 +18,9 @@ public class UC3UserInputPalindrome {
         }
 
         if (input.equals(reversed)) {
-            System.out.println(input + " is a Palindrome");
+            System.out.println("It is a Palindrome (Ignoring Case)");
         } else {
-            System.out.println(input + " is NOT a Palindrome");
+            System.out.println("It is NOT a Palindrome");
         }
 
         sc.close();
